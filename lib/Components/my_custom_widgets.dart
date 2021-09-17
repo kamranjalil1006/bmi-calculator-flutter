@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ReuseableWidget extends StatelessWidget {
@@ -10,13 +11,17 @@ class ReuseableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPress,
-      child: Container(
-        decoration: BoxDecoration(
-          color: customColor,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Material(
+          elevation: 5,
+          shadowColor: Colors.deepPurpleAccent,
           borderRadius: BorderRadius.circular(10.0),
+          child: Container(
+            color: customColor,
+            child: customchild,
+          ),
         ),
-        margin: EdgeInsets.all(10),
-        child: customchild,
       ),
     );
   }

@@ -24,190 +24,196 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text('BMI Calculator'),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.deepPurpleAccent,
+          title: Center(
+            child: Text(
+              'BMI Calculator',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
         ),
-      ),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ReuseableWidget(
-                      customColor: genderType == Gender.male
-                          ? kActiveColor
-                          : kInactiveColor,
-                      customchild: IconContent(FontAwesomeIcons.mars, 'Male'),
-                      onPress: () {
-                        setState(() {
-                          genderType = Gender.male;
-                        });
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: ReuseableWidget(
-                        customColor: genderType == Gender.female
+        body: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ReuseableWidget(
+                        customColor: genderType == Gender.male
                             ? kActiveColor
                             : kInactiveColor,
-                        customchild:
-                            IconContent(FontAwesomeIcons.venus, 'Female'),
+                        customchild: IconContent(FontAwesomeIcons.mars, 'Male'),
                         onPress: () {
                           setState(() {
-                            genderType = Gender.female;
+                            genderType = Gender.male;
                           });
-                        }),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: ReuseableWidget(
-                customColor: kActiveColor,
-                customchild: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Height',
-                      style: kMyTextStyle,
+                        },
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: [
-                        Text(height.toString(), style: kMyBoldTextStyle),
-                        Text('cm', style: kMyTextStyle)
-                      ],
-                    ),
-                    SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                          activeTrackColor: Colors.white,
-                          inactiveTrackColor: Color(0xFF8D8E98),
-                          thumbColor: Color(0xFFEB1555),
-                          overlayColor: Color(0x29EB1555),
-                          thumbShape:
-                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                          overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 30)),
-                      child: Slider(
-                          value: height.toDouble(),
-                          min: 60,
-                          max: 240,
-                          onChanged: (double newValue) {
+                    Expanded(
+                      child: ReuseableWidget(
+                          customColor: genderType == Gender.female
+                              ? kActiveColor
+                              : kInactiveColor,
+                          customchild:
+                              IconContent(FontAwesomeIcons.venus, 'Female'),
+                          onPress: () {
                             setState(() {
-                              height = newValue.round();
+                              genderType = Gender.female;
                             });
                           }),
                     )
                   ],
                 ),
               ),
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ReuseableWidget(
-                        customColor: kActiveColor,
-                        customchild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Weight',
-                              style: kMyTextStyle,
-                            ),
-                            Text(
-                              weight.toString(),
-                              style: kMyBoldTextStyle,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                MyRoundIconButton(FontAwesomeIcons.minus, () {
-                                  setState(() {
-                                    weight--;
-                                  });
-                                }),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                MyRoundIconButton(FontAwesomeIcons.plus, () {
-                                  setState(() {
-                                    weight++;
-                                  });
-                                })
-                              ],
-                            )
-                          ],
-                        ),
-                        onPress: () {}),
+              Expanded(
+                child: ReuseableWidget(
+                  customColor: kActiveColor,
+                  customchild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Height',
+                        style: kMyTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(height.toString(), style: kMyBoldTextStyle),
+                          Text('cm', style: kMyTextStyle)
+                        ],
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: Colors.deepPurpleAccent.shade700,
+                            inactiveTrackColor: Color(0xFF8D8E98),
+                            thumbColor: Colors.deepPurpleAccent,
+                            overlayColor: Color(0x299A32CD),
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 30)),
+                        child: Slider(
+                            value: height.toDouble(),
+                            min: 60,
+                            max: 240,
+                            onChanged: (double newValue) {
+                              setState(() {
+                                height = newValue.round();
+                              });
+                            }),
+                      )
+                    ],
                   ),
-                  Expanded(
-                    child: ReuseableWidget(
-                        customColor: kActiveColor,
-                        customchild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Age',
-                              style: kMyTextStyle,
-                            ),
-                            Text(
-                              age.toString(),
-                              style: kMyBoldTextStyle,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                MyRoundIconButton(FontAwesomeIcons.minus, () {
-                                  setState(() {
-                                    age--;
-                                  });
-                                }),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                MyRoundIconButton(FontAwesomeIcons.plus, () {
-                                  setState(() {
-                                    age++;
-                                  });
-                                })
-                              ],
-                            )
-                          ],
-                        ),
-                        onPress: () {}),
-                  ),
-                ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 6, right: 6, bottom: 5),
-              child: MyBottomBar(
-                barText: 'Calculate',
-                onPressed: () {
-                  BMICalculatorBrain calculator =
-                      BMICalculatorBrain(weight: weight, height: height);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => (ResultPage(
-                        result: calculator.getResult(),
-                        resultText: calculator.bmiResultText(),
-                        advice: calculator.advice(),
-                      )),
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ReuseableWidget(
+                          customColor: kActiveColor,
+                          customchild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Weight',
+                                style: kMyTextStyle,
+                              ),
+                              Text(
+                                weight.toString(),
+                                style: kMyBoldTextStyle,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  MyRoundIconButton(FontAwesomeIcons.minus, () {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  }),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  MyRoundIconButton(FontAwesomeIcons.plus, () {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  })
+                                ],
+                              )
+                            ],
+                          ),
+                          onPress: () {}),
                     ),
-                  );
-                },
+                    Expanded(
+                      child: ReuseableWidget(
+                          customColor: kActiveColor,
+                          customchild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Age',
+                                style: kMyTextStyle,
+                              ),
+                              Text(
+                                age.toString(),
+                                style: kMyBoldTextStyle,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  MyRoundIconButton(FontAwesomeIcons.minus, () {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  }),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  MyRoundIconButton(FontAwesomeIcons.plus, () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  })
+                                ],
+                              )
+                            ],
+                          ),
+                          onPress: () {}),
+                    ),
+                  ],
+                ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.only(left: 6, right: 6, bottom: 5),
+                child: MyBottomBar(
+                  barText: 'Calculate',
+                  onPressed: () {
+                    BMICalculatorBrain calculator =
+                        BMICalculatorBrain(weight: weight, height: height);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => (ResultPage(
+                          result: calculator.getResult(),
+                          resultText: calculator.bmiResultText(),
+                          advice: calculator.advice(),
+                        )),
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

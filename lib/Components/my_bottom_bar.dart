@@ -13,7 +13,7 @@ class MyBottomBar extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFEB1555),
+          color: Colors.deepPurpleAccent,
           borderRadius: BorderRadius.circular(5),
         ),
         margin: EdgeInsets.all(5),

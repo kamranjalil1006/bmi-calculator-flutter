@@ -15,6 +15,7 @@ class ResultPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurpleAccent,
           title: Text(
             'BMI Calculator',
           ),
