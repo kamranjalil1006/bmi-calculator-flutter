@@ -20,8 +20,11 @@ class MyBottomBar extends StatelessWidget {
         width: double.infinity,
         height: kBottomBarheight,
         child: Center(
-            child: Text(barText,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
+          child: Text(
+            barText,
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+        ),
       ),
     );
   }
